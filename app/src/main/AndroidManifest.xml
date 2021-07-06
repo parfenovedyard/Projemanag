@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Progemanage">
         <activity
+            android:name=".IntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyTheme"
+            ></activity>
+        <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyTheme">
@@ -19,8 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
