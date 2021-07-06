@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.progemanage">
+    package="com.example.projemanag">
 
     <application
         android:allowBackup="true"
@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Progemanage">
         <activity
-            android:name=".IntroActivity"
+            android:name="com.example.projemanag.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyTheme"
             ></activity>
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.projemanag.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyTheme">
             <intent-filter>
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name="com.example.projemanag.MainActivity"></activity>
     </application>
 
 </manifest>
