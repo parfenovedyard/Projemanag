@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".SignInActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationNoActionBar"/>
         <activity
             android:name=".SignUpActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MyApplicationNoActionBar"/>
+            android:theme="@style/Theme.MyApplicationNoActionBar" />
         <activity
             android:name=".IntroActivity"
             android:screenOrientation="portrait"
@@ -28,9 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity" />
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
