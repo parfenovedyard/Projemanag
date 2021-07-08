@@ -1,14 +1,16 @@
 package com.example.projemanag.activities
 
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.WindowManager
+import android.widget.Toast
 import com.example.projemanag.R
 
 import com.example.projemanag.databinding.ActivitySignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
 
@@ -34,5 +36,44 @@ class SignUpActivity : AppCompatActivity() {
         binding.toolbarSignUpActivity.setNavigationOnClickListener {
             onBackPressed()
         }
+        binding.btnSignUp.setOnClickListener {
+            registerUser()
+        }
     }
+
+    private fun registerUser(){
+        val name: String = binding.etName.text.toString().trim { it <= ' ' }
+        val email: String = binding.etEmail.text.toString().trim { it <= ' ' }
+        val password: String = binding.etPassword.text.toString().trim { it <= ' ' }
+
+        if (validateForm(name, email, password)) {
+
+            Toast.makeText(
+                this@SignUpActivity,
+                "Now we can register a new user.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun validateForm(name: String, email: String, password: String): Boolean {
+        return when {
+            TextUtils.isEmpty(name) -> {
+                showErrorSnackBar("Please enter name.")
+                false
+            }
+            TextUtils.isEmpty(email) -> {
+                showErrorSnackBar("Please enter email.")
+                false
+            }
+            TextUtils.isEmpty(password) -> {
+                showErrorSnackBar("Please enter password.")
+                false
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
 }
