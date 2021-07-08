@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.example.projemanag.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityIntroBinding
 
