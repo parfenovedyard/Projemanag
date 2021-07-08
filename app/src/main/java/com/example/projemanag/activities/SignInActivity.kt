@@ -1,19 +1,18 @@
-package com.example.projemanag
-
+package com.example.projemanag.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import com.example.projemanag.R
+import com.example.projemanag.databinding.ActivitySignInBinding
 
-import com.example.projemanag.databinding.ActivitySignUpBinding
+class SignInActivity : AppCompatActivity() {
 
-class SignUpActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var binding: ActivitySignInBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         window.setFlags(
@@ -22,15 +21,16 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         setupActionBar()
+
     }
     private fun setupActionBar() {
-        setSupportActionBar(binding.toolbarSignUpActivity)
+        setSupportActionBar(binding.toolbarSignInActivity)
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_black_color_back_24dp)
         }
-        binding.toolbarSignUpActivity.setNavigationOnClickListener {
+        binding.toolbarSignInActivity.setNavigationOnClickListener {
             onBackPressed()
         }
     }
