@@ -44,9 +44,9 @@ class SignUpActivity : BaseActivity() {
     }
 
     private fun registerUser(){
-        val name: String = binding.etName.text.toString().trim { it <= ' ' }
-        val email: String = binding.etEmail.text.toString().trim { it <= ' ' }
-        val password: String = binding.etPassword.text.toString().trim { it <= ' ' }
+        val name: String = binding.etNameSignUp.text.toString().trim { it <= ' ' }
+        val email: String = binding.etEmailSignUp.text.toString().trim { it <= ' ' }
+        val password: String = binding.etPasswordSignUp.text.toString().trim { it <= ' ' }
 
         if (validateForm(name, email, password)) {
             showProgressDialog(resources.getString(R.string.please_wait))
@@ -65,7 +65,7 @@ class SignUpActivity : BaseActivity() {
                         FirebaseAuth.getInstance().signOut()
                         finish()
                     } else {
-                        Toast.makeText(this, task.exception!!.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Registration failed", Toast.LENGTH_LONG).show()
                     }
                 }
         }
