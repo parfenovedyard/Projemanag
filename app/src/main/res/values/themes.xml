@@ -33,6 +33,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.ActionBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+    <style name="Theme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
+
 </resources>
 
     <!-- <item name="colorPrimary">@color/purple_500</item>
