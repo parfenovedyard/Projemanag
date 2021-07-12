@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivitySignInBinding
+import com.example.projemanag.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInActivity : BaseActivity() {
@@ -34,6 +35,11 @@ class SignInActivity : BaseActivity() {
 
         setupActionBar()
 
+    }
+    fun signInSuccess(user: User) {
+        hideProgressDialog()
+        startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+        finish()
     }
     private fun setupActionBar() {
         setSupportActionBar(binding.toolbarSignInActivity)
