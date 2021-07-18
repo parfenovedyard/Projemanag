@@ -3,6 +3,7 @@ package com.example.projemanag.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.service.controls.actions.FloatAction
 import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
@@ -14,6 +15,7 @@ import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivityMainBinding
 import com.example.projemanag.firebase.FirestoreClass
 import com.example.projemanag.models.User
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -36,6 +38,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         binding.navView.setNavigationItemSelectedListener(this)
 
         FirestoreClass().loadUserData(this)
+
+        findViewById<FloatingActionButton>(R.id.fab_create_board).setOnClickListener {
+            startActivity(Intent(this, CreateBoardActivity::class.java))
+        }
     }
 
     private fun setupActionBar() {
