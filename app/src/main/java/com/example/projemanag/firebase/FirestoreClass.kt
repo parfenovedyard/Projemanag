@@ -2,6 +2,7 @@ package com.example.projemanag.firebase
 
 import android.app.Activity
 import android.util.Log
+import android.widget.Toast
 import com.example.projemanag.activities.MainActivity
 import com.example.projemanag.activities.MyProfileActivity
 import com.example.projemanag.activities.SignInActivity
@@ -25,6 +26,27 @@ class FirestoreClass {
             }.addOnFailureListener { e ->
             Log.e("ups", "Register error")
         }
+    }
+
+    fun updateUserProfileData(activity: MyProfileActivity,
+                              userHashMap: HashMap<String, Any>) {
+        mFirestore.collection(Constants.USERS)
+            .document(getCurrentUserId())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                Log.i(activity.javaClass.simpleName,
+                    "Profile data updates successfully!")
+                Toast.makeText(activity,
+                    "Profile updated successfully!", Toast.LENGTH_LONG).show()
+                activity.profileUpdateSuccess()
+            }.addOnFailureListener {
+                e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName,
+                    "Error while creating a board" , e)
+                Toast.makeText(activity,
+                    "Error while creating a board", Toast.LENGTH_LONG).show()
+            }
     }
 
     fun loadUserData(activity: Activity) {
