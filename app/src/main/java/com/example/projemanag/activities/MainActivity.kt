@@ -3,8 +3,6 @@ package com.example.projemanag.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.SyncStateContract
-import android.service.controls.actions.FloatAction
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -65,6 +63,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             val adapter = BoardItemsAdapter(this, boardsList)
             findViewById<RecyclerView>(R.id.rv_boards_list).adapter = adapter
+
+            adapter.setOnClickListener(object: BoardItemsAdapter.OnclickListener{
+                override fun onClick(position: Int, model: Board) {
+                    startActivity(Intent(this@MainActivity, TaskListActivity::class.java))
+                }
+            })
         }else{
             findViewById<RecyclerView>(R.id.rv_boards_list).visibility = View.GONE
             findViewById<TextView>(R.id.tv_no_boards_available).visibility = View.VISIBLE
