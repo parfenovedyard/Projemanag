@@ -167,4 +167,26 @@ class FirestoreClass {
         return currentUserId
     }
 
+    fun getAssignedMembersListDetails(activity: MembersActivity,
+                                      assignedTo: ArrayList<String>) {
+        mFirestore.collection(Constants.USERS).whereIn(Constants.ID, assignedTo)
+            .get()
+            .addOnSuccessListener {
+                documemt ->
+                Log.e(activity.javaClass.simpleName, documemt.documents.toString())
+                val usersList: ArrayList<User> = ArrayList()
+
+                for (i in documemt.documents) {
+                    val user = i.toObject(User::class.java)
+                    if (user != null) {
+                        usersList.add(user)
+                    }
+                }
+                activity.setupMembersList(usersList)
+            }.addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error while creating a board.", e)
+            }
+    }
+
 }
