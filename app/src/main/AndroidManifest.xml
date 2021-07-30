@@ -14,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".activities.CardDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplicationNoActionBar"
+            android:exported="true" />
+        <activity
             android:name=".activities.MembersActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MyApplicationNoActionBar"/>
+            android:theme="@style/Theme.MyApplicationNoActionBar" />
         <activity
             android:name=".activities.TaskListActivity"
             android:screenOrientation="portrait"
