@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.projemanag.R
 import com.example.projemanag.databinding.ActivityCardDetailsBinding
 import com.example.projemanag.dialogs.LabelColorListDialog
+import com.example.projemanag.dialogs.MembersListDialog
 import com.example.projemanag.firebase.FirestoreClass
 import com.example.projemanag.models.Board
 import com.example.projemanag.models.Card
@@ -59,6 +60,10 @@ class CardDetailsActivity : BaseActivity() {
 
         binding.tvSelectLabelColor.setOnClickListener {
             labelColorsListDialog()
+        }
+
+        binding.tvSelectMembers.setOnClickListener {
+            membersListDialog()
         }
     }
 
@@ -128,6 +133,37 @@ class CardDetailsActivity : BaseActivity() {
         if (intent.hasExtra(Constants.BOARD_MEMBERS_LIST)) {
             mMembersDetailList = intent.getParcelableArrayListExtra(Constants.BOARD_MEMBERS_LIST)!!
         }
+    }
+
+    private fun membersListDialog() {
+        var cardAssignedMembersList = mBoardDetails
+            .taskList[mTaskListPosition].cards[mCardPosition].assignedTo
+
+        if (cardAssignedMembersList.size > 0) {
+            for (i in mMembersDetailList.indices) {
+                for (j in cardAssignedMembersList) {
+                    if (mMembersDetailList[i].id == j) {
+                        mMembersDetailList[i].selected = true
+                    }
+                }
+            }
+        }else{
+            for (i in mMembersDetailList.indices) {
+                mMembersDetailList[i].selected = false
+            }
+        }
+
+        val listDialog = object: MembersListDialog(
+            this,
+            mMembersDetailList,
+            resources.getString(R.string.str_select_label_color)
+        ){
+            override fun onItemSelected(user: User, action: String) {
+                //
+            }
+        }
+        listDialog.show()
+
     }
 
     private fun updateCardDetails() {
